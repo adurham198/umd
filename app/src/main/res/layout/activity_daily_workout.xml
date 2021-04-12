@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/ExerciseDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="111dp"
+        android:layout_marginBottom="23dp"
+        android:text="@string/exercise_duration_hrs"
+        app:layout_constraintBottom_toTopOf="@+id/ExerciseType"
+        app:layout_constraintStart_toStartOf="@+id/ExerciseType"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ExerciseType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/exercise_type"
+        app:layout_constraintBottom_toTopOf="@+id/ExerciseSets"
+        app:layout_constraintStart_toStartOf="@+id/ExerciseSets"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseDuration" />
+
+    <EditText
+        android:id="@+id/ExerciseSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/sets_completed"
+        app:layout_constraintBottom_toTopOf="@+id/ExerciseReps"
+        app:layout_constraintEnd_toEndOf="@+id/ExerciseReps"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseType" />
+
+    <EditText
+        android:id="@+id/ExerciseReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107dp"
+        android:layout_marginBottom="19dp"
+        android:text="@string/reps_completed"
+        app:layout_constraintBottom_toTopOf="@+id/ExerciseWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseSets" />
+
+    <EditText
+        android:id="@+id/ExerciseWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/weight_used"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/ExerciseReps"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseReps" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="204dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="164dp"
+        android:text="Add Workout"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/AddExercise"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="9dp"
+        android:text="Add Exercise"
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>
