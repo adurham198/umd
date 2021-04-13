@@ -12,20 +12,21 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.umd.objects.Nutrients;
 import com.example.umd.objects.Player;
 import com.example.umd.objects.Workouts;
 
 public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "PlayersDB";
+
     //Declare Tables in DB
     private static final String TABLE_NAME = "Players";
-    private static final String INPUT_TABLE_NAME = "Inputs";
+    private static final String INPUT_TABLE_NAME = "DailyInputs";
     private static final String NUTRIENT_INPUT_TABLE = "NutrientInputs";
 
     //Declare attributes for Player Class
-    private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_MOBILE = "mobile";
     private static final String KEY_PASS = "pass";
@@ -54,7 +55,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_EXERCISEDATE = "exerciseDate";
 
     //Declare Columns in DB
-    private static final String[] COLUMNS = { KEY_ID, KEY_NAME, KEY_MOBILE,
+    private static final String[] COLUMNS = { KEY_NAME, KEY_MOBILE,
             KEY_PASS, KEY_GENDER, String.valueOf(KEY_WEIGHT), String.valueOf(KEY_HEIGHT), KEY_FREQ};
     private static final String[] NUTRIENT_COLUMNS = { KEY_NAME, KEY_CALORIES, KEY_CARBS, KEY_PROTEIN, KEY_SUGAR, KEY_SLEEP, KEY_FAT, KEY_CHOLESTEROL, KEY_FIBER, KEY_DATE};
     private static final String[] EXERCISE_COLUMNS = { KEY_NAME, KEY_EXERCISEDURATION, KEY_EXERCISETYPE, KEY_SETS, KEY_REPS, KEY_EXERCISEDATE};
@@ -67,11 +68,11 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //creating table in database
         String CREATION_TABLE = "CREATE TABLE Players ( "
-                + "id INTEGER PRIMARY KEY, " + "name TEXT, "
+                + "name TEXT PRIMARY KEY, "
                 + "mobile TEXT, " + "pass TEXT, " + "gender TEXT, " + "weight INTEGER, " + "height INTEGER, " +"freq TEXT )";
 
         String DAILY_INPUTS = "CREATE TABLE DailyInputs ( "
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "CALORIES INTEGER, "
+                + "name TEXT PRIMARY KEY, " + "CALORIES INTEGER, "
                 + "CARBS INTEGER, " + "PROTEIN INTEGER, " + "SUGAR INTEGER, " + "SLEEP INTEGER, " + "FAT INTEGER, "
                 + "CHOLESTEROL INTEGER, " + "FIBER INTEGER )";
         String DAILY_WORKOUT_INPUTS = "CREATE TABLE WorkoutInputs ( "
@@ -79,34 +80,38 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
                 + "exerciseweight, " + "date DATE )";
 
         db.execSQL(CREATION_TABLE);
-        db.execSQL(DAILY_WORKOUT_INPUTS);
+        Log.d("MSG", "FAILED AFTER CREATING DAILY INPUT");
         db.execSQL(DAILY_INPUTS);
+        db.execSQL(DAILY_WORKOUT_INPUTS);
     }
 
     public boolean initializedb()
     {
-        if(numberofrowsinDB() == 0)
+        String playerTable = TABLE_NAME;
+        String nutrientTable = NUTRIENT_INPUT_TABLE;
+        String workoutTable = INPUT_TABLE_NAME;
+        if(numberofrowsinDB(TABLE_NAME) == 0)
         {
             SQLiteDatabase db = this.getWritableDatabase();
-            //db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES(1, 'anton', '734', 'abc', 'Male', 129, 80, 'Always')");
-            db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES(1, 2000, 250, 200, 50, 8, 70, 0, 20, 28)");
+            db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES('anton', '734', 'abc', 'Male', 129, 80, 'Always')");
+            db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES('anton', 2000, 'cardio', 20, 50, 8, '07/06/2000')");
+            db.execSQL("INSERT INTO " + NUTRIENT_INPUT_TABLE + " VALUES('anton', 2000, 250, 200, 50, 8, 70, 0, 20, '07/06/2000')");
             //insert in the order you need the values
             //Alter this statement to not let users insert without fields filled out
             db.close();
             return true;
         }
-        else
         {
             return false;
         }
     }
     //only do this the first time you load the database
 
-    public int numberofrowsinDB()
+    public int numberofrowsinDB(String table_name)
     {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        int numRows = (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, table_name);
         db.close();
 
         return numRows;
@@ -122,7 +127,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void deleteOne(Player player) {
         // Get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, "id = ?", new String[] { String.valueOf(player.getId()) });
+        db.delete(TABLE_NAME, "id = ?", new String[] { String.valueOf(player.getName()) });
         db.close();
     }
     public boolean checkifexists(String key)
@@ -140,6 +145,21 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         return true;
 
     }
+    public boolean checkLoginCredentials(String key, String pword){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE name = ? ", new String[] { key } );
+        Cursor res2 = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE pass = ? ", new String[] { pword });
+        if (res.moveToLast()){
+            if(res2.moveToLast()){
+                Log.d("PASSWORD LOOKS RIGHT", "MSG");
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
+        return false;
+    }
     public Player getPlayer(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, // a. table
@@ -155,14 +175,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Player player = new Player();
-        player.setId(Integer.parseInt(cursor.getString(0)));
-        player.setName(cursor.getString(1));
-        player.setMobile(cursor.getString(2));
-        player.setPass(cursor.getString(3));
-        player.setGender(cursor.getString(4));
-        player.setWeight(Integer.parseInt(cursor.getString(5)));
-        player.setHeight(Integer.parseInt(cursor.getString(6)));
-        player.setFreq(cursor.getString(7));
+        player.setName(cursor.getString(0));
+        player.setMobile(cursor.getString(1));
+        player.setPass(cursor.getString(2));
+        player.setGender(cursor.getString(3));
+        player.setWeight(Integer.parseInt(cursor.getString(4)));
+        player.setHeight(Integer.parseInt(cursor.getString(5)));
+        player.setFreq(cursor.getString(6));
 
         return player;
     }
@@ -178,14 +197,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 player = new Player();
-                player.setId(Integer.parseInt(cursor.getString(0)));
-                player.setName(cursor.getString(1));
-                player.setMobile(cursor.getString(2));
-                player.setPass(cursor.getString(3));
-                player.setGender(cursor.getString(4));
-                player.setWeight(Integer.parseInt(cursor.getString(5)));
-                player.setHeight(Integer.parseInt(cursor.getString(6)));
-                player.setFreq(cursor.getString(7));
+                player.setName(cursor.getString(0));
+                player.setMobile(cursor.getString(1));
+                player.setPass(cursor.getString(2));
+                player.setGender(cursor.getString(3));
+                player.setWeight(Integer.parseInt(cursor.getString(4)));
+                player.setHeight(Integer.parseInt(cursor.getString(5)));
+                player.setFreq(cursor.getString(6));
                 players.add(player);
             } while (cursor.moveToNext());
         }
@@ -196,7 +214,6 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void addPlayer(Player player) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, player.getId());
         values.put(KEY_NAME, player.getName());
         values.put(KEY_MOBILE, player.getMobile());
         values.put(KEY_PASS, player.getPass());
@@ -208,7 +225,22 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_NAME,null, values);
         db.close();
     }
-
+    public void addNutrients(Nutrients nutrients) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, nutrients.getName());
+        values.put(KEY_CALORIES, nutrients.getTotalCalories());
+        values.put(KEY_CARBS,nutrients.getTotalCarbs());
+        values.put(KEY_PROTEIN, nutrients.getTotalProtein());
+        values.put(KEY_SUGAR, nutrients.getTotalSugar());
+        values.put(KEY_SLEEP, nutrients.getTotalSleep());
+        values.put(KEY_FAT, nutrients.getTotalFat());
+        values.put(KEY_CHOLESTEROL, nutrients.getCholesterol());
+        values.put(KEY_FIBER, nutrients.getDietaryFiber());
+        // insert
+        db.insert(NUTRIENT_INPUT_TABLE,null, values);
+        db.close();
+    }
     public void addWorkout(Workouts workouts) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -220,7 +252,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_ExerciseWEIGHT, workouts.getExerciseWeight());
         values.put(KEY_DATE, workouts.getExerciseDate().toString());
         // insert
-        db.insert(TABLE_NAME,null, values);
+        db.insert(INPUT_TABLE_NAME,null, values);
         db.close();
     }
 
@@ -237,7 +269,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         int i = db.update(TABLE_NAME, // table
                 values, // column/value
                 "id = ?", // selections
-                new String[] { String.valueOf(player.getId()) });
+                new String[] { String.valueOf(player.getName()) });
         db.close();
         return i;
     }

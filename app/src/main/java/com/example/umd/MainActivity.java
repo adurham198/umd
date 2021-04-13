@@ -18,6 +18,9 @@ public class MainActivity extends Activity {
     Intent login;
     Intent HomeScreen;
     Intent DailyWorkoutScreen;
+    Intent Recommendations;
+    Intent DietaryAdvice;
+    Intent DailyNutrientScreen;
     Player player1 = new Player();
     SQLiteDatabaseHandler dbhelper;
     @Override
@@ -30,10 +33,11 @@ public class MainActivity extends Activity {
         login = new Intent(MainActivity.this, Login.class);
         HomeScreen = new Intent(MainActivity.this, HomeScreen.class);
         DailyWorkoutScreen = new Intent(MainActivity.this, DailyWorkoutScreen.class);
-
+        Recommendations = new Intent(MainActivity.this, RecommendationScreen.class);
+        DietaryAdvice = new Intent(MainActivity.this, DietAdviceScreen.class);
+        DailyNutrientScreen = new Intent(MainActivity.this, com.example.umd.DailyNutrientsScreen.class);
         dbhelper = new SQLiteDatabaseHandler(this);
         dbhelper.initializedb();
-        dbhelper.allPlayers();
         gotoLogin();
         gotoregister();
     }

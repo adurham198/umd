@@ -1,5 +1,6 @@
 package com.example.umd;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class Register extends Activity {
         });
     }
 
+    @SuppressLint("ResourceAsColor")
     public void addplayer()
     {
         ma.dbhelper = new SQLiteDatabaseHandler(this);
@@ -76,7 +78,15 @@ public class Register extends Activity {
         player.setWeight(Integer.parseInt(weight.trim()));
         player.setHeight(Integer.parseInt(height.trim()));
         player.setFreq(freq);
-        ma.dbhelper.addPlayer(player);
+        ifempty = ma.dbhelper.checkifexists(uname);
+        if(ifempty){
+            x_txt_uname.setText("Sorry, that username is taken");
+            x_txt_uname.setHighlightColor(android.R.color.holo_red_light);
+
+        }
+       else{
+            ma.dbhelper.addPlayer(player);
+        }
     }
     public void goback()
     {

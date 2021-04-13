@@ -2,7 +2,6 @@ package com.example.umd.objects;
 
 public class Player {
 
-    private int id;
     private String name;
     private String mobile;
     private String pass;
@@ -14,8 +13,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(int id, String name, String mobile, String pass, String gender, Integer weight, Integer height, String freq) {
-        this.id = id;
+    public Player( String name, String mobile, String pass, String gender, Integer weight, Integer height, String freq) {
         this.name = name;
         this.mobile = mobile;
         this.pass = pass;
@@ -25,13 +23,6 @@ public class Player {
         this.freq = freq;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

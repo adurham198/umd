@@ -3,7 +3,7 @@ package com.example.umd.objects;
 import java.util.Date;
 
 public class Nutrients {
-    private int id;
+    private String name;
     private int TotalCalories;
     private int TotalCarbs;
     private int TotalProtein;
@@ -17,8 +17,8 @@ public class Nutrients {
     public Nutrients() {
     }
 
-    public Nutrients(int id, int TotalCalories, int TotalCarbs, int TotalProtein, int TotalSugar, int TotalSleep, int totalFat, int Cholesterol, int dietaryFiber, Date inputDate) {
-        this.id = id;
+    public Nutrients(String name, int TotalCalories, int TotalCarbs, int TotalProtein, int TotalSugar, int TotalSleep, int totalFat, int Cholesterol, int dietaryFiber, Date inputDate) {
+        this.name = name;
         this.TotalCalories= TotalCalories;
         this.TotalCarbs = TotalCarbs;
         this.TotalProtein = TotalProtein;
@@ -30,12 +30,12 @@ public class Nutrients {
         this.inputDate = inputDate;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getTotalCalories() {
