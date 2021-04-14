@@ -15,10 +15,12 @@ public class HomeScreen extends MainActivity {
     Button z_btn_rec;
     Button z_btn_nutr;
     Button z_btn_dietrec;
+    Button z_btn_calc;
     Intent dailyWorkoutScreen;
     Intent recommendations;
     Intent DietaryAdvice;
     Intent dietaryInput;
+    Intent Calculator;
     String testvar;
     Uname sharedData = Uname.getInstance();
     @Override
@@ -29,15 +31,18 @@ public class HomeScreen extends MainActivity {
         z_btn_rec = (Button) findViewById(R.id.navtoRec);
         z_btn_dietrec = (Button) findViewById(R.id.navtoDietRec);
         z_btn_nutr = (Button) findViewById(R.id.input_daily_nutrients);
+        z_btn_calc = (Button) findViewById(R.id.CalculatorButton);
 
         dailyWorkoutScreen = new Intent(this, DailyWorkoutScreen.class);
         recommendations = new Intent(this, RecommendationScreen.class);
         DietaryAdvice = new Intent(this, DietAdviceScreen.class);
         dietaryInput = new Intent(this, DailyNutrientsScreen.class);
+        Calculator = new Intent(this, Calculator.class);
         addWorkout();
         NavToRec();
         NavToDietRec();
         addNutrient();
+        NavToCalc();
     }
 
     public void addWorkout() {
@@ -68,5 +73,14 @@ public class HomeScreen extends MainActivity {
             public void onClick(View v) { startActivity(DietaryAdvice); }
         });
     }
+
+    public void NavToCalc() {
+        z_btn_calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { startActivity(Calculator);}
+        });
+
+    }
+
 
 }
