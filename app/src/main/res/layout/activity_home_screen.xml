@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/input_daily_workout"
-        android:layout_width="141dp"
-        android:layout_height="58dp"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
         android:layout_marginTop="110dp"
         android:backgroundTint="#FFEB3B"
         android:text="@string/input_workout"
@@ -17,6 +17,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/input_daily_nutrients"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Input Nutrients"
+        android:textColor="#00168E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_daily_workout" />
+
+    <Button
+        android:id="@+id/navtoDietRec"
+        android:layout_width="190dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Dietary Recommendations"
+        android:textColor="#03178A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navtoRec" />
+
+    <Button
+        android:id="@+id/navtoRec"
+        android:layout_width="190dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Workout Recommendations"
+        android:textColor="#01147C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_daily_nutrients" />
 
     <TextView
         android:id="@+id/textView2"
