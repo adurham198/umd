@@ -52,7 +52,7 @@ public class DailyWorkoutScreen extends MainActivity{
 
     public void addWorkout()
     {
-        ma.dbhelper = new SQLiteDatabaseHandler(this);
+        dbhelper = new SQLiteDatabaseHandler(this);
         Workouts workouts = new Workouts();
 
         int duration = Integer.parseInt(a_Duration.getText().toString());
@@ -68,6 +68,6 @@ public class DailyWorkoutScreen extends MainActivity{
         workouts.setExerciseReps(reps);
         workouts.setExerciseWeight(weight);
         workouts.setExerciseDate(new Date());
-        ma.dbhelper.addWorkout(workouts);
+        dbhelper.addWorkout(workouts);
     }
 }

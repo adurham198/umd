@@ -15,16 +15,16 @@ import android.util.Log;
 import com.example.umd.objects.Nutrients;
 import com.example.umd.objects.Player;
 import com.example.umd.objects.Workouts;
-
+import java.util.Random;
 public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "PlayersDB";
 
     //Declare Tables in DB
     private static final String TABLE_NAME = "Players";
-    private static final String INPUT_TABLE_NAME = "DailyInputs";
-    private static final String NUTRIENT_INPUT_TABLE = "NutrientInputs";
+    private static final String INPUT_TABLE_NAME = "WorkoutInputs";
+    private static final String NUTRIENT_INPUT_TABLE = "DailyInputs";
 
     //Declare attributes for Player Class
     private static final String KEY_NAME = "name";
@@ -36,6 +36,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_FREQ = "freq";
 
     //Declare Attributes for Daily Nutrient Intake
+    private static final String KEY_ID = "id";
     private static final String KEY_CALORIES= "calories";
     private static final String KEY_CARBS = "carbs";
     private static final String KEY_PROTEIN = "protein";
@@ -57,8 +58,8 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     //Declare Columns in DB
     private static final String[] COLUMNS = { KEY_NAME, KEY_MOBILE,
             KEY_PASS, KEY_GENDER, String.valueOf(KEY_WEIGHT), String.valueOf(KEY_HEIGHT), KEY_FREQ};
-    private static final String[] NUTRIENT_COLUMNS = { KEY_NAME, KEY_CALORIES, KEY_CARBS, KEY_PROTEIN, KEY_SUGAR, KEY_SLEEP, KEY_FAT, KEY_CHOLESTEROL, KEY_FIBER, KEY_DATE};
-    private static final String[] EXERCISE_COLUMNS = { KEY_NAME, KEY_EXERCISEDURATION, KEY_EXERCISETYPE, KEY_SETS, KEY_REPS, KEY_EXERCISEDATE};
+    private static final String[] NUTRIENT_COLUMNS = { KEY_ID, KEY_NAME, KEY_CALORIES, KEY_CARBS, KEY_PROTEIN, KEY_SUGAR, KEY_SLEEP, KEY_FAT, KEY_CHOLESTEROL, KEY_FIBER, KEY_DATE};
+    private static final String[] EXERCISE_COLUMNS = { KEY_ID, KEY_NAME, KEY_EXERCISEDURATION, KEY_EXERCISETYPE, KEY_SETS, KEY_REPS, KEY_EXERCISEDATE, KEY_DATE};
 
     public SQLiteDatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -72,15 +73,16 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
                 + "mobile TEXT, " + "pass TEXT, " + "gender TEXT, " + "weight INTEGER, " + "height INTEGER, " +"freq TEXT )";
 
         String DAILY_INPUTS = "CREATE TABLE DailyInputs ( "
-                + "name TEXT PRIMARY KEY, " + "CALORIES INTEGER, "
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT, " + "CALORIES INTEGER, "
                 + "CARBS INTEGER, " + "PROTEIN INTEGER, " + "SUGAR INTEGER, " + "SLEEP INTEGER, " + "FAT INTEGER, "
-                + "CHOLESTEROL INTEGER, " + "FIBER INTEGER )";
+                + "CHOLESTEROL INTEGER, " + "FIBER INTEGER, " + "date DATE )";
+
         String DAILY_WORKOUT_INPUTS = "CREATE TABLE WorkoutInputs ( "
-                + "name TEXT PRIMARY KEY, " + "duration INTEGER, " + "type STRING, " + "SETS INTEGER, " + "REPS INTEGER, "
+        + "id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT, " + "duration INTEGER, " + "type STRING, " + "SETS INTEGER, " + "REPS INTEGER, "
                 + "exerciseweight, " + "date DATE )";
 
-        db.execSQL(CREATION_TABLE);
         Log.d("MSG", "FAILED AFTER CREATING DAILY INPUT");
+        db.execSQL(CREATION_TABLE);
         db.execSQL(DAILY_INPUTS);
         db.execSQL(DAILY_WORKOUT_INPUTS);
     }
@@ -90,12 +92,12 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         String playerTable = TABLE_NAME;
         String nutrientTable = NUTRIENT_INPUT_TABLE;
         String workoutTable = INPUT_TABLE_NAME;
-        if(numberofrowsinDB(TABLE_NAME) == 0)
+        if(numberofrowsinDB(NUTRIENT_INPUT_TABLE) == 0)
         {
             SQLiteDatabase db = this.getWritableDatabase();
-            db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES('anton', '734', 'abc', 'Male', 129, 80, 'Always')");
-            db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES('anton', 2000, 'cardio', 20, 50, 8, '07/06/2000')");
-            db.execSQL("INSERT INTO " + NUTRIENT_INPUT_TABLE + " VALUES('anton', 2000, 250, 200, 50, 8, 70, 0, 20, '07/06/2000')");
+            db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES('antoopo', '734', 'abc', 'Male', 129, 80, 'Always')");
+            db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES(7, 'antoop', 2000, 'cardio', 20, 50, 8, '2020-07-04')");
+            db.execSQL("INSERT INTO " + NUTRIENT_INPUT_TABLE + " VALUES(99, 'antoop', 2000, 250, 200, 50, 8, 70, 0, 20, '2020-07-04')");
             //insert in the order you need the values
             //Alter this statement to not let users insert without fields filled out
             db.close();
@@ -121,6 +123,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         // you can implement here migration process
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + INPUT_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + NUTRIENT_INPUT_TABLE);
         this.onCreate(db);
     }
 
@@ -214,6 +217,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void addPlayer(Player player) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put(KEY_NAME, player.getName());
         values.put(KEY_MOBILE, player.getMobile());
         values.put(KEY_PASS, player.getPass());
@@ -228,6 +232,8 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void addNutrients(Nutrients nutrients) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        int rand = (int) Math.random();
+        values.put(KEY_ID, rand);
         values.put(KEY_NAME, nutrients.getName());
         values.put(KEY_CALORIES, nutrients.getTotalCalories());
         values.put(KEY_CARBS,nutrients.getTotalCarbs());
@@ -244,6 +250,8 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void addWorkout(Workouts workouts) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        int rand = (int) Math.random();
+        values.put(KEY_ID, rand);
         values.put(KEY_NAME, workouts.getUName());
         values.put(KEY_EXERCISEDURATION, workouts.getExerciseDuration());
         values.put(KEY_EXERCISETYPE, workouts.getExerciseType());
