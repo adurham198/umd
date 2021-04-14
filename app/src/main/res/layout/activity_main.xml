@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Welcome to UMD FIT"
-        android:textColor="#FFEB3B"
+        android:textColor="#E81123"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
