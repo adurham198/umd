@@ -4,41 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="@drawable/umdlogo"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/initial_register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
-        android:text="Create Profile"
+        android:backgroundTint="#FFEB3B"
+        android:text="@string/register"
+        android:textColor="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/initial_login_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/initial_login_btn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/initial_login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="17dp"
+        android:backgroundTint="#FFEB3B"
         android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/initial_register_btn"
-        app:layout_constraintStart_toStartOf="@+id/initial_register_btn"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textColor="#0D2EE1"
+        android:textColorLink="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="250dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="124dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="#FFEB3B"
         android:gravity="center"
         android:text="Welcome to UMD FIT"
-        app:layout_constraintBottom_toTopOf="@+id/initial_login_btn"
+        android:textColor="#071C91"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#071877">
 
     <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
+        android:hint="Username"
         android:singleLine="true"
-        android:text="Username"
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,62 +24,72 @@
         android:id="@+id/Height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
+        android:hint="Height"
         android:inputType="text"
         android:singleLine="true"
-        android:text="Height"
-        app:layout_constraintBottom_toTopOf="@+id/freq"
-        app:layout_constraintEnd_toEndOf="@+id/freq" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     <EditText
         android:id="@+id/weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
+        android:hint="Weight"
         android:singleLine="true"
-        android:text="Weight "
-        app:layout_constraintBottom_toTopOf="@+id/Height"
-        app:layout_constraintStart_toStartOf="@+id/gender" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Height" />
 
     <EditText
         android:id="@+id/mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
+        android:hint="Mobile"
         android:inputType="text"
         android:singleLine="true"
-        android:text="Mobile"
-        app:layout_constraintStart_toStartOf="@+id/Name"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/freq" />
 
     <EditText
         android:id="@+id/freq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginBottom="39dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
+        android:hint="Workout Frequency"
         android:inputType="text"
         android:singleLine="true"
-        android:text="Frequency"
-        app:layout_constraintBottom_toTopOf="@+id/register_btn"
-        app:layout_constraintStart_toStartOf="@+id/register_btn" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
 
     <EditText
         android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
+        android:hint="Gender"
         android:inputType="text"
         android:singleLine="true"
-        android:text="Gender"
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -85,31 +98,41 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:gravity="center"
+        android:hint="Password"
         android:inputType="textPassword"
         android:singleLine="true"
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mobile" />
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
 
     <Button
         android:id="@+id/register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="53dp"
+        android:backgroundTint="#FFEB3B"
         android:text="Register"
+        android:textColor="#02157E"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back" />
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/mobile" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:backgroundTint="#FFEB3B"
         android:text="Back"
+        android:textColor="#021371"
         app:layout_constraintBaseline_toBaselineOf="@+id/register_btn"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -3,75 +3,107 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#071877">
 
     <EditText
         android:id="@+id/ExerciseDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="111dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginTop="150dp"
         android:text="@string/exercise_duration_hrs"
-        app:layout_constraintBottom_toTopOf="@+id/ExerciseType"
-        app:layout_constraintStart_toStartOf="@+id/ExerciseType"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="Exercise Duration (hrs)" />
 
     <EditText
         android:id="@+id/ExerciseType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/exercise_type"
-        app:layout_constraintBottom_toTopOf="@+id/ExerciseSets"
-        app:layout_constraintStart_toStartOf="@+id/ExerciseSets"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseDuration" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseDuration"
+        tools:hint="Exercise Type" />
 
     <EditText
         android:id="@+id/ExerciseSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="30dp"
         android:text="@string/sets_completed"
-        app:layout_constraintBottom_toTopOf="@+id/ExerciseReps"
-        app:layout_constraintEnd_toEndOf="@+id/ExerciseReps"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseType" />
+        android:textColor="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseType"
+        tools:hint="Sets completed"
+        tools:textColorHint="#FFEB3B" />
 
     <EditText
         android:id="@+id/ExerciseReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="107dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="30dp"
         android:text="@string/reps_completed"
-        app:layout_constraintBottom_toTopOf="@+id/ExerciseWeight"
+        android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseSets" />
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseSets"
+        tools:hint="Reps completed" />
 
     <EditText
         android:id="@+id/ExerciseWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="30dp"
         android:text="@string/weight_used"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/ExerciseReps"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseReps" />
+        android:textColor="#FFEB3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseReps"
+        tools:hint="Weight used"
+        tools:textColorHint="#FFEB3B" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="204dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="115dp"
+        android:backgroundTint="#FFEB3B"
         android:text="Add Workout"
+        android:textColor="#091D8E"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseWeight">
         android:id="@+id/AddExercise"
         android:layout_marginStart="6dp"
         android:layout_marginTop="9dp"
-        android:text="Add Exercise"
-    </Button>
+        android:text="Add Exercise"</Button>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="70dp"
+        android:background="#FFEB3B"
+        android:text="Today's Workout"
+        android:textAlignment="center"
+        android:textColor="#041B98"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ExerciseDuration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
