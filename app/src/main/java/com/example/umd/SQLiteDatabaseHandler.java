@@ -89,7 +89,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         {
             SQLiteDatabase db = this.getWritableDatabase();
             //db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES(1, 'anton', '734', 'abc', 'Male', 129, 80, 'Always')");
-            db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES(1, 2000, 250, 200, 50, 8, 70, 0, 20, 28)");
+            //db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES(1, 2000, 250, 200, 50, 8, 70, 0, 20, 28)");
             //insert in the order you need the values
             //Alter this statement to not let users insert without fields filled out
             db.close();

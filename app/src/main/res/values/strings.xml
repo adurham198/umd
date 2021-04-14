@@ -2,12 +2,12 @@
     <string name="app_name">umd</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="username">Username</string>
+    <string name="username"> </string>
     <string name="sign_in">Sign In</string>
     <string name="input_workout">Input Workout</string>
-    <string name="weight_used">Weight used</string>
-    <string name="reps_completed">Reps completed</string>
+    <string name="weight_used">Weight Used</string>
+    <string name="reps_completed">Reps Completed</string>
     <string name="exercise_type">Exercise Type</string>
-    <string name="sets_completed">Sets completed</string>
-    <string name="exercise_duration_hrs">Exercise Duration (hrs)</string>
+    <string name="sets_completed">Sets Completed</string>
+    //<string name="exercise_duration_hrs">Exercise Duration (Hrs)</string>
 </resources>
