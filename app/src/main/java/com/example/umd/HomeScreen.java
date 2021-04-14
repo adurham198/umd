@@ -16,6 +16,7 @@ public class HomeScreen extends MainActivity {
     Button z_btn_nutr;
     Button z_btn_dietrec;
     Button z_btn_calc;
+    Button z_btn_deletion;
     Intent dailyWorkoutScreen;
     Intent recommendations;
     Intent DietaryAdvice;
@@ -32,17 +33,20 @@ public class HomeScreen extends MainActivity {
         z_btn_dietrec = (Button) findViewById(R.id.navtoDietRec);
         z_btn_nutr = (Button) findViewById(R.id.input_daily_nutrients);
         z_btn_calc = (Button) findViewById(R.id.CalculatorButton);
+        z_btn_deletion = (Button) findViewById(R.id.inputDeletion);
 
         dailyWorkoutScreen = new Intent(this, DailyWorkoutScreen.class);
         recommendations = new Intent(this, RecommendationScreen.class);
         DietaryAdvice = new Intent(this, DietAdviceScreen.class);
         dietaryInput = new Intent(this, DailyNutrientsScreen.class);
         Calculator = new Intent(this, Calculator.class);
+
         addWorkout();
         NavToRec();
         NavToDietRec();
         addNutrient();
         NavToCalc();
+        InputDeletion();
     }
 
     public void addWorkout() {
@@ -71,6 +75,12 @@ public class HomeScreen extends MainActivity {
         z_btn_dietrec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { startActivity(DietaryAdvice); }
+        });
+    }
+    public void InputDeletion() {
+        z_btn_deletion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { startActivity(new Intent(HomeScreen.this, DeletionActivity.class)); }
         });
     }
 
