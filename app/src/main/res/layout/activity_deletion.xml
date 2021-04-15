@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,10 +17,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Title"/>
+            android:text="Title" />
         <EditText
             android:id="@+id/et_title"
             android:layout_width="match_parent"
@@ -37,10 +37,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Description"/>
+            android:text="Description" />
         <EditText
             android:id="@+id/et_desc"
             android:layout_width="match_parent"
@@ -56,10 +57,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Primary Actor"/>
+            android:text="Primary Actor" />
         <EditText
             android:id="@+id/et_actor"
             android:layout_width="match_parent"
@@ -75,10 +77,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Preconditions"/>
+            android:text="Preconditions" />
         <EditText
             android:id="@+id/et_precond"
             android:layout_width="match_parent"
@@ -94,10 +97,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Postconditions"/>
+            android:text="Postconditions" />
         <EditText
             android:id="@+id/et_postcond"
             android:layout_width="match_parent"
@@ -113,10 +117,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Main Success Scenario"/>
+            android:text="Main Success Scenario" />
         <EditText
             android:id="@+id/et_scenario"
             android:layout_width="match_parent"
@@ -132,10 +137,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Extensions"/>
+            android:text="Extensions" />
         <EditText
             android:id="@+id/et_extension"
             android:layout_width="match_parent"
@@ -151,10 +157,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Frequency of use"/>
+            android:text="Frequency of use" />
         <EditText
             android:id="@+id/et_freq"
             android:layout_width="match_parent"
@@ -170,10 +177,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Status"/>
+            android:text="Status" />
         <EditText
             android:id="@+id/et_status"
             android:layout_width="match_parent"
@@ -189,10 +197,11 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Priority"/>
+            android:text="Priority" />
         <EditText
             android:id="@+id/et_priority"
             android:layout_width="match_parent"
@@ -209,123 +218,4 @@
         android:onClick="addData"/>
 
 </LinearLayout>
-=======
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_title" />
-
-    <EditText
-        android:id="@+id/et_actor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_desc" />
-
-    <EditText
-        android:id="@+id/et_precond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_actor" />
-
-    <EditText
-        android:id="@+id/et_postcond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_precond" />
-
-    <EditText
-        android:id="@+id/et_scenario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_postcond" />
-
-    <EditText
-        android:id="@+id/et_extension"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_scenario" />
-
-    <EditText
-        android:id="@+id/et_freq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_extension" />
-
-    <EditText
-        android:id="@+id/et_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_freq" />
-
-    <EditText
-        android:id="@+id/et_priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_status" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> a605114a3bd056e0cfacf5950201acf67a32fbf3
