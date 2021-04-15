@@ -11,65 +11,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:text="@string/exercise_duration_hrs"
+        android:hint="Exercise Duration (hrs)"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:hint="Exercise Duration (hrs)" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ExerciseType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/exercise_type"
+        android:hint="@string/exercise_type"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseDuration"
-        tools:hint="Exercise Type" />
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseDuration" />
 
     <EditText
         android:id="@+id/ExerciseSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/sets_completed"
+        android:hint="@string/sets_completed"
         android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseType"
-        tools:hint="Sets completed"
-        tools:textColorHint="#FFEB3B" />
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseType" />
 
     <EditText
         android:id="@+id/ExerciseReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/reps_completed"
+        android:hint="@string/reps_completed"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseSets"
-        tools:hint="Reps completed" />
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseSets" />
 
     <EditText
         android:id="@+id/ExerciseWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/weight_used"
+        android:hint="@string/weight_used"
         android:textColor="#FFEB3B"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExerciseReps"
-        tools:hint="Weight used"
-        tools:textColorHint="#FFEB3B" />
+        app:layout_constraintTop_toBottomOf="@+id/ExerciseReps" />
 
     <Button
         android:id="@+id/button2"
