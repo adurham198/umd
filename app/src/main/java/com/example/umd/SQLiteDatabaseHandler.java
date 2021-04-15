@@ -148,10 +148,12 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public void deleteOne(Player player) {
+    public void deleteOne(String name) {
         // Get reference to writable DB
+
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, "id = ?", new String[] { String.valueOf(player.getName()) });
+        db.delete(TABLE_NAME, "name = ?", new String[] { name });
+
         db.close();
     }
     public boolean checkifexists(String key)

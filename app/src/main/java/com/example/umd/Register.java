@@ -24,6 +24,7 @@ public class Register extends Activity {
     Button  x_btn_back;
     Button x_btn_register;
     Intent x_view_gethome;
+    Intent x_view_login;
 
 
     @Override
@@ -49,6 +50,7 @@ public class Register extends Activity {
         x_txt_height = (EditText) findViewById(R.id.Height);
         x_btn_back = (Button) findViewById(R.id.back);
         x_btn_register = (Button) findViewById(R.id.register_btn);
+        x_view_login = new Intent(this, Login.class);
         x_view_gethome = new Intent(Register.this, MainActivity.class);
         ma = new MainActivity();
         goback();
@@ -101,6 +103,7 @@ public class Register extends Activity {
         }
        else{
             ma.dbhelper.addPlayer(player);
+            startActivity(x_view_login);
         }
     }
     public void goback()
