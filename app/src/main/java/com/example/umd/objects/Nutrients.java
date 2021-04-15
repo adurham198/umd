@@ -92,6 +92,7 @@ public class Nutrients {
     public void setDietaryFiber(int dietaryFiber) {
         this.dietaryFiber = dietaryFiber;
     }
+
     public Date getDate() {
         return inputDate;
     }

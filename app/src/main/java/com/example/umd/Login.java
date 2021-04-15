@@ -35,7 +35,6 @@ public class Login extends MainActivity{
     }
 
     public void signIn() {
-
         y_btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

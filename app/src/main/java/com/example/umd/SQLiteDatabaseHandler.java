@@ -1,5 +1,6 @@
 package com.example.umd;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -232,9 +233,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void addNutrients(Nutrients nutrients) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        int rand = (int) Math.random();
+        int min = (int) Math.ceil(1);
+        int max = (int) Math.floor(65000);
+        int rand = (int) Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        Log.d("Record ID ", String.valueOf(rand));
         values.put(KEY_ID, rand);
         values.put(KEY_NAME, nutrients.getName());
+        Log.d("Carb Message", String.valueOf(nutrients.getTotalCarbs()));
         values.put(KEY_CALORIES, nutrients.getTotalCalories());
         values.put(KEY_CARBS,nutrients.getTotalCarbs());
         values.put(KEY_PROTEIN, nutrients.getTotalProtein());
@@ -282,4 +287,22 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         return i;
     }
 
+    public Nutrients getTodayMetric(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Nutrients rec = new Nutrients();
+        Cursor res = db.rawQuery("SELECT * FROM " + NUTRIENT_INPUT_TABLE + " WHERE name = ? ", new String[]{ name });
+        if (res.moveToLast()) {
+            rec.setName(name);
+            rec.setTotalCalories(res.getColumnIndex(String.valueOf(2)));
+            rec.setTotalCarbs(res.getColumnIndex(String.valueOf(3)));
+            rec.setTotalProtein(res.getColumnIndex(String.valueOf(4)));
+            rec.setTotalSugar(res.getColumnIndex(String.valueOf(5)));
+            rec.setTotalSleep(res.getColumnIndex(String.valueOf(6)));
+            rec.setTotalFat(res.getColumnIndex(String.valueOf(7)));
+            rec.setCholesterol(res.getColumnIndex(String.valueOf(8)));
+            rec.setDietaryFiber(res.getColumnIndex(String.valueOf(9)));
+        }
+        db.close();
+        return rec;
+    }
 }

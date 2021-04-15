@@ -18,6 +18,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/input_daily_nutrients"
+        android:layout_width="141dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="316dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="input nutrients"
+        android:textColor="#031470"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exercise_rec_page"
+        android:layout_width="141dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="212dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Exercises"
+        android:textColor="#031470"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/nav_to_metrics"
+        android:layout_width="141dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="404dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Metrics"
+        android:textColor="#031470"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
