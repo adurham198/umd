@@ -9,5 +9,9 @@
     <string name="reps_completed">Reps Completed</string>
     <string name="exercise_type">Exercise Type</string>
     <string name="sets_completed">Sets Completed</string>
-    //<string name="exercise_duration_hrs">Exercise Duration (Hrs)</string>
+    <string name="exercise_duration_hrs">Exercise Duration (Hrs)</string>
+    <string name="nutrition_links">
+        https://www.nutrition.gov/
+        https://psychologyofeating.com/
+        https://www.bestfoodfacts.org/</string>
 </resources>

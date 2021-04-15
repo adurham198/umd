@@ -8,9 +8,9 @@
 
     <Button
         android:id="@+id/input_daily_workout"
-        android:layout_width="141dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="110dp"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="#FFEB3B"
         android:text="@string/input_workout"
         android:textColor="#031470"
@@ -20,39 +20,39 @@
 
     <Button
         android:id="@+id/input_daily_nutrients"
-        android:layout_width="141dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="316dp"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#FFEB3B"
-        android:text="input nutrients"
-        android:textColor="#031470"
+        android:text="Input Nutrients"
+        android:textColor="#00168E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/input_daily_workout" />
 
     <Button
-        android:id="@+id/exercise_rec_page"
-        android:layout_width="141dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="212dp"
+        android:id="@+id/navtoDietRec"
+        android:layout_width="190dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#FFEB3B"
-        android:text="Exercises"
-        android:textColor="#031470"
+        android:text="Dietary Recommendations"
+        android:textColor="#03178A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/navtoRec" />
 
     <Button
-        android:id="@+id/nav_to_metrics"
-        android:layout_width="141dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="404dp"
+        android:id="@+id/navtoRec"
+        android:layout_width="190dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#FFEB3B"
-        android:text="Metrics"
-        android:textColor="#031470"
+        android:text="Workout Recommendations"
+        android:textColor="#01147C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/input_daily_nutrients" />
 
     <TextView
         android:id="@+id/textView2"
@@ -70,4 +70,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/CalculatorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Calculate My Info"
+        android:textColor="#04146C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navtoDietRec" />
+
+    <Button
+        android:id="@+id/inputDeletion"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Delete Account"
+        android:textColor="#04198C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CalculatorButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

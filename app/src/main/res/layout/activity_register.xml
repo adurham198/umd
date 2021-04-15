@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:hint="Height"
+        android:hint="Height (inches)"
         android:inputType="text"
         android:singleLine="true"
         android:textColor="#FFEB3B"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:hint="Weight"
+        android:hint="Weight (lbs)"
         android:singleLine="true"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
@@ -50,29 +50,28 @@
         app:layout_constraintTop_toBottomOf="@+id/Height" />
 
     <EditText
-        android:id="@+id/mobile"
+        android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:hint="Mobile"
-        android:inputType="text"
+        android:hint="Age"
         android:singleLine="true"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/freq" />
+        app:layout_constraintTop_toBottomOf="@+id/FrequencyChoices" />
 
     <EditText
         android:id="@+id/freq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:hint="Workout Frequency"
         android:inputType="text"
         android:singleLine="true"
+        android:text="Workout Frequency:"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +122,7 @@
         android:textColor="#02157E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/mobile" />
+        app:layout_constraintTop_toBottomOf="@+id/age" />
 
     <Button
         android:id="@+id/back"
@@ -135,5 +134,15 @@
         android:textColor="#021371"
         app:layout_constraintBaseline_toBaselineOf="@+id/register_btn"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/FrequencyChoices"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/freq" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
