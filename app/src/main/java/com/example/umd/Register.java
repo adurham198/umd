@@ -50,7 +50,7 @@ public class Register extends Activity {
 
         x_spin_freq = (Spinner) findViewById(R.id.FrequencyChoices);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, frequencyChoices);
+                R.layout.spinner_item, frequencyChoices);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         x_spin_freq.setAdapter(adapter);
 

@@ -22,6 +22,7 @@ public class HomeScreen extends MainActivity {
     Intent DietaryAdvice;
     Intent dietaryInput;
     Intent Calculator;
+    Intent DeletionActivity;
     String testvar;
     Uname sharedData = Uname.getInstance();
     @Override
@@ -40,6 +41,7 @@ public class HomeScreen extends MainActivity {
         DietaryAdvice = new Intent(this, DietAdviceScreen.class);
         dietaryInput = new Intent(this, DailyNutrientsScreen.class);
         Calculator = new Intent(this, Calculator.class);
+        DeletionActivity = new Intent(this, DeletionActivity.class);
 
         addWorkout();
         NavToRec();
@@ -80,7 +82,7 @@ public class HomeScreen extends MainActivity {
     public void InputDeletion() {
         z_btn_deletion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { startActivity(new Intent(HomeScreen.this, DeletionActivity.class)); }
+            public void onClick(View v) { startActivity(DeletionActivity); }
         });
     }
 

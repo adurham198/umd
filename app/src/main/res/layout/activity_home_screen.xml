@@ -82,4 +82,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navtoDietRec" />
+
+    <Button
+        android:id="@+id/inputDeletion"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Delete Account"
+        android:textColor="#04198C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CalculatorButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
