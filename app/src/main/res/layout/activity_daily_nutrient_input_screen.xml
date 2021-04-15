@@ -4,140 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="#071877">
+    android:background="#071877">
 
     <EditText
         android:id="@+id/calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="70dp"
+        android:hint="Calories"
         android:inputType="number"
         android:textColorHint="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/carbs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:hint="Calories" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/carbs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="10dp"
+        android:hint="Total Carbs"
         android:inputType="number"
         android:textColorHint="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/protein"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calories"
-        tools:hint="Total Carbs" />
+        app:layout_constraintTop_toBottomOf="@+id/calories" />
 
     <EditText
         android:id="@+id/protein"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="10dp"
+        android:hint="Total Protien"
         android:inputType="number"
         android:textColorHint="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/sugar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carbs"
-        tools:hint="Total Protien" />
+        app:layout_constraintTop_toBottomOf="@+id/carbs" />
 
     <EditText
         android:id="@+id/sugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
+        android:layout_marginTop="10dp"
+        android:hint="Total Sugar"
         android:inputType="number"
         android:textColorHint="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/sleep"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/protein"
-        tools:hint="Total Sugar" />
+        app:layout_constraintTop_toBottomOf="@+id/protein" />
 
     <EditText
         android:id="@+id/sleep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="10dp"
+        android:hint="Total Sleep"
         android:inputType="number"
         android:textColorHint="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/fat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sugar"
-        tools:hint="Total Sleep" />
+        app:layout_constraintTop_toBottomOf="@+id/sugar" />
 
     <EditText
         android:id="@+id/fat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:hint="Total Fat"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/cholesterol"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleep"
-        tools:hint="Total Fat"
-        tools:textColorHint="#FFEB3B" />
+        app:layout_constraintTop_toBottomOf="@+id/sleep" />
 
     <EditText
         android:id="@+id/cholesterol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="10dp"
+        android:hint="Total Cholesterol"
         android:inputType="number"
         android:textColorHint="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/fiber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fat"
-        tools:hint="Total Cholesterol" />
+        app:layout_constraintTop_toBottomOf="@+id/fat" />
 
     <EditText
         android:id="@+id/fiber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="10dp"
         android:hint="Total Dietary Fiber"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cholesterol"
-        tools:textColorHint="#FFEB3B" />
+        app:layout_constraintTop_toBottomOf="@+id/cholesterol" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="204dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#FFEB3B"
         android:text="Add Nutrients"
         android:textColor="#031680"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"></Button>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fiber"></Button>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
+        android:background="#FFEB3B"
         android:text="Nutrients"
         android:textAlignment="center"
         android:textColor="#021681"
-        android:textSize="50sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/calories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="#FFEB3B" />
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

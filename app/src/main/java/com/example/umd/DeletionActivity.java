@@ -12,6 +12,7 @@ import com.example.umd.objects.Deletion;
 public class DeletionActivity extends AppCompatActivity {
     private EditText editText1, editText2, editText3, editText4, editText5, editText6, editText7, editText8, editText9, editText10;
     SQLiteDatabaseHandler dbhelper;
+    Deletion myModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +31,14 @@ public class DeletionActivity extends AppCompatActivity {
         editText9 = findViewById(R.id.et_status);
         editText10 = findViewById(R.id.et_priority);
 
+
     }
 
     public void addData(View view) {
         if (isValid()) {
             dbhelper = new SQLiteDatabaseHandler(this);
 
-            Deletion myModel = new Deletion();
+            myModel = new Deletion();
             myModel.setTitle(editText1.getText().toString());
             myModel.setDescription(editText2.getText().toString());
             myModel.setPrimary_actor(editText3.getText().toString());

@@ -53,7 +53,7 @@
         android:id="@+id/mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:hint="Mobile"
         android:inputType="text"
@@ -62,17 +62,17 @@
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/freq" />
+        app:layout_constraintTop_toBottomOf="@+id/FrequencyChoices" />
 
     <EditText
         android:id="@+id/freq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:hint="Workout Frequency"
         android:inputType="text"
         android:singleLine="true"
+        android:text="Workout Frequency:"
         android:textColor="#FFEB3B"
         android:textColorHint="#FFEB3B"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,5 +135,15 @@
         android:textColor="#021371"
         app:layout_constraintBaseline_toBaselineOf="@+id/register_btn"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/FrequencyChoices"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/freq" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

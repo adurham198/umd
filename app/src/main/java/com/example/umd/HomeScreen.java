@@ -15,11 +15,14 @@ public class HomeScreen extends MainActivity {
     Button z_btn_rec;
     Button z_btn_nutr;
     Button z_btn_dietrec;
+    Button z_btn_calc;
     Button z_btn_deletion;
     Intent dailyWorkoutScreen;
     Intent recommendations;
     Intent DietaryAdvice;
     Intent dietaryInput;
+    Intent Calculator;
+    Intent DeletionActivity;
     String testvar;
     Uname sharedData = Uname.getInstance();
     @Override
@@ -30,17 +33,21 @@ public class HomeScreen extends MainActivity {
         z_btn_rec = (Button) findViewById(R.id.navtoRec);
         z_btn_dietrec = (Button) findViewById(R.id.navtoDietRec);
         z_btn_nutr = (Button) findViewById(R.id.input_daily_nutrients);
+        z_btn_calc = (Button) findViewById(R.id.CalculatorButton);
         z_btn_deletion = (Button) findViewById(R.id.inputDeletion);
 
         dailyWorkoutScreen = new Intent(this, DailyWorkoutScreen.class);
         recommendations = new Intent(this, RecommendationScreen.class);
         DietaryAdvice = new Intent(this, DietAdviceScreen.class);
         dietaryInput = new Intent(this, DailyNutrientsScreen.class);
+        Calculator = new Intent(this, Calculator.class);
+        DeletionActivity = new Intent(this, DeletionActivity.class);
 
         addWorkout();
         NavToRec();
         NavToDietRec();
         addNutrient();
+        NavToCalc();
         InputDeletion();
     }
 
@@ -75,8 +82,17 @@ public class HomeScreen extends MainActivity {
     public void InputDeletion() {
         z_btn_deletion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { startActivity(new Intent(HomeScreen.this, DeletionActivity.class)); }
+            public void onClick(View v) { startActivity(DeletionActivity); }
         });
     }
+
+    public void NavToCalc() {
+        z_btn_calc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { startActivity(Calculator);}
+        });
+
+    }
+
 
 }
