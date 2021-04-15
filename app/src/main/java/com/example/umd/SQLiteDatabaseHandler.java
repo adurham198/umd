@@ -115,7 +115,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         if(numberofrowsinDB(NUTRIENT_INPUT_TABLE) == 0)
         {
             SQLiteDatabase db = this.getWritableDatabase();
-            db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES('antoopo', '734', 'abc', 'Male', 129, 80, 'Always')");
+            db.execSQL("INSERT INTO " + TABLE_NAME + " VALUES('antoopo', 22, 'abc', 'Male', 129, 80, '4')");
             db.execSQL("INSERT INTO " + INPUT_TABLE_NAME + " VALUES(7, 'antoop', 2000, 'cardio', 20, 50, 8, '2020-07-04')");
             db.execSQL("INSERT INTO " + NUTRIENT_INPUT_TABLE + " VALUES(99, 'antoop', 2000, 250, 200, 50, 8, 70, 0, 20, '2020-07-04')");
             //insert in the order you need the values
@@ -199,7 +199,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
         Player player = new Player();
         player.setName(cursor.getString(0));
-        player.setMobile(cursor.getString(1));
+        player.setAge(Integer.parseInt(cursor.getString(1)));
         player.setPass(cursor.getString(2));
         player.setGender(cursor.getString(3));
         player.setWeight(Integer.parseInt(cursor.getString(4)));
@@ -221,7 +221,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
             do {
                 player = new Player();
                 player.setName(cursor.getString(0));
-                player.setMobile(cursor.getString(1));
+                player.setAge(Integer.parseInt(cursor.getString(1)));
                 player.setPass(cursor.getString(2));
                 player.setGender(cursor.getString(3));
                 player.setWeight(Integer.parseInt(cursor.getString(4)));
@@ -239,7 +239,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(KEY_NAME, player.getName());
-        values.put(KEY_MOBILE, player.getMobile());
+        values.put(KEY_MOBILE, player.getAge());
         values.put(KEY_PASS, player.getPass());
         values.put(KEY_GENDER, player.getGender());
         values.put(KEY_WEIGHT, player.getWeight());
@@ -307,7 +307,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public int updatePlayer(Player player) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_MOBILE, player.getMobile());
+        values.put(KEY_MOBILE, player.getAge());
         values.put(KEY_PASS, player.getPass());
         values.put(KEY_GENDER, player.getGender());
         values.put(KEY_WEIGHT, player.getWeight());

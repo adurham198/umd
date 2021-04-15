@@ -15,7 +15,7 @@ import com.example.umd.objects.Player;
 public class Register extends Activity {
     MainActivity ma;
     EditText x_txt_uname;
-    EditText x_txt_mobile;
+    EditText x_txt_age;
     EditText x_txt_pword;
     EditText x_txt_gender;
     EditText x_txt_weight;
@@ -35,8 +35,14 @@ public class Register extends Activity {
                 "0", "1", "2", "3", "4", "5", "6", "7"
         };
 
+        x_spin_freq = (Spinner) findViewById(R.id.FrequencyChoices);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.spinner_item, frequencyChoices);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        x_spin_freq.setAdapter(adapter);
+
         x_txt_uname = (EditText) findViewById(R.id.Name);
-        x_txt_mobile = (EditText) findViewById(R.id.mobile);
+        x_txt_age = (EditText) findViewById(R.id.age);
         x_txt_pword = (EditText) findViewById(R.id.password);
         x_txt_gender = (EditText) findViewById(R.id.gender);
         x_txt_weight = (EditText) findViewById(R.id.weight);
@@ -48,11 +54,7 @@ public class Register extends Activity {
         goback();
         registerfunc();
 
-        x_spin_freq = (Spinner) findViewById(R.id.FrequencyChoices);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.spinner_item, frequencyChoices);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        x_spin_freq.setAdapter(adapter);
+
 
 
     }
@@ -77,7 +79,7 @@ public class Register extends Activity {
         Player player = new Player();
 
         String uname = x_txt_uname.getText().toString();
-        String mobile = x_txt_mobile.getText().toString();
+        String age = x_txt_age.getText().toString();
         String gender = x_txt_gender.getText().toString();
         String weight= x_txt_weight.getText().toString();
         String height = x_txt_height.getText().toString();
@@ -85,7 +87,7 @@ public class Register extends Activity {
         String freq = x_spin_freq.getSelectedItem().toString();
 
         player.setName(uname);
-        player.setMobile(mobile);
+        player.setAge(Integer.parseInt(age.trim()));
         player.setPass(pword);
         player.setGender(gender);
         player.setWeight(Integer.parseInt(weight.trim()));

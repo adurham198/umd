@@ -3,7 +3,7 @@ package com.example.umd.objects;
 public class Player {
 
     private String name;
-    private String mobile;
+    private int age;
     private String pass;
     private String gender;
     private int weight;
@@ -13,9 +13,9 @@ public class Player {
     public Player() {
     }
 
-    public Player( String name, String mobile, String pass, String gender, Integer weight, Integer height, String freq) {
+    public Player( String name, Integer age, String pass, String gender, Integer weight, Integer height, String freq) {
         this.name = name;
-        this.mobile = mobile;
+        this.age = age;
         this.pass = pass;
         this.gender = gender;
         this.weight = weight;
@@ -31,12 +31,12 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public String getMobile() {
-        return mobile;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getPass() {
@@ -78,7 +78,7 @@ public class Player {
     }
     @Override
     public String toString() {
-        return name + " - " + weight + " - " + height + " cm";
+        return name + " - " + weight + " - " + height + " in";
     }
 
 }
