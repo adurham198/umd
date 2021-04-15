@@ -22,8 +22,7 @@ public class Calculator extends MainActivity implements AdapterView.OnItemSelect
 
         Spinner goalSpinner = (Spinner) findViewById(R.id.GoalChoice);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, goalChoices);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, goalChoices);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         goalSpinner.setAdapter(adapter);
 
