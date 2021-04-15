@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/GoalChoice" />
 
     <TextView
-        android:id="@+id/Calories"
+        android:id="@+id/calories_calc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -196,7 +196,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/bmi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -223,12 +223,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/bmi"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/bmr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"

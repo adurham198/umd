@@ -11,10 +11,27 @@ import android.widget.TextView;
 //implements AdapterView.OnItemSelectedListener
 
 public class Calculator extends MainActivity implements AdapterView.OnItemSelectedListener {
+    TextView calc_calories;
+    TextView calc_protien;
+    TextView calc_fats;
+    TextView calc_carbs;
+    TextView calc_bmi;
+    TextView calc_bmr;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_screen);
+
+        calc_calories = (TextView) findViewById(R.id.calories_calc);
+        calc_protien = (TextView) findViewById(R.id.protien_calc);
+        calc_fats = (TextView) findViewById(R.id.fat_calc);
+        calc_carbs = (TextView) findViewById(R.id.carbs_calc);
+        calc_bmi = (TextView) findViewById(R.id.bmi);
+        calc_bmr = (TextView) findViewById(R.id.bmr);
+
 
         String[] goalChoices = new String[] {
                 "Gain", "Lose", "Maintain"
