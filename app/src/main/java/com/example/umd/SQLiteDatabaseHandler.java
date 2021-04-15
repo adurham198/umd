@@ -147,10 +147,12 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public void deleteOne(Player player) {
+    public void deleteOne(String name) {
         // Get reference to writable DB
+
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, "id = ?", new String[] { String.valueOf(player.getName()) });
+        db.delete(TABLE_NAME, "name = ?", new String[] { name });
+
         db.close();
     }
     public boolean checkifexists(String key)
@@ -252,9 +254,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void addNutrients(Nutrients nutrients) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        int rand = (int) Math.random();
+        int min = (int) Math.ceil(1);
+        int max = (int) Math.floor(65000);
+        int rand = (int) Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        Log.d("Record ID ", String.valueOf(rand));
         values.put(KEY_ID, rand);
         values.put(KEY_NAME, nutrients.getName());
+        Log.d("Carb Message", String.valueOf(nutrients.getTotalCarbs()));
         values.put(KEY_CALORIES, nutrients.getTotalCalories());
         values.put(KEY_CARBS,nutrients.getTotalCarbs());
         values.put(KEY_PROTEIN, nutrients.getTotalProtein());
