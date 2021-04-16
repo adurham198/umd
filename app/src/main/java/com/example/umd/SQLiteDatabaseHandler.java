@@ -1,6 +1,9 @@
 package com.example.umd;
 
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,11 +19,12 @@ import android.util.Log;
 import com.example.umd.objects.Deletion;
 import com.example.umd.objects.Nutrients;
 import com.example.umd.objects.Player;
+import com.example.umd.objects.SharedDate;
 import com.example.umd.objects.Workouts;
 import java.util.Random;
 public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "PlayersDB";
 
     //Declare Tables in DB
@@ -58,23 +62,11 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ExerciseWEIGHT = "exerciseweight";
     private static final String KEY_EXERCISEDATE = "exerciseDate";
 
-    // Declare Deletion option
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_DESC = "description";
-    public static final String KEY_ACTOR = "primary_actor";
-    public static final String KEY_PRECOND = "preconditions";
-    public static final String KEY_POSTCOND = "postconditions";
-    public static final String KEY_SCENARIO = "main_success_scenario";
-    public static final String KEY_EXTENSION = "extensions";
-    public static final String KEY_FREQUENCY = "frequency_of_use";
-    public static final String KEY_STATUS = "status";
-    public static final String KEY_PRIORITY = "priority";
-
     //Declare Columns in DB
     private static final String[] COLUMNS = { KEY_NAME, KEY_MOBILE,
             KEY_PASS, KEY_GENDER, String.valueOf(KEY_WEIGHT), String.valueOf(KEY_HEIGHT), KEY_FREQ};
     private static final String[] NUTRIENT_COLUMNS = { KEY_ID, KEY_NAME, KEY_CALORIES, KEY_CARBS, KEY_PROTEIN, KEY_SUGAR, KEY_SLEEP, KEY_FAT, KEY_CHOLESTEROL, KEY_FIBER, KEY_DATE};
-    private static final String[] EXERCISE_COLUMNS = { KEY_ID, KEY_NAME, KEY_EXERCISEDURATION, KEY_EXERCISETYPE, KEY_SETS, KEY_REPS, KEY_EXERCISEDATE, KEY_DATE};
+    private static final String[] EXERCISE_COLUMNS = { KEY_ID, KEY_NAME, KEY_EXERCISEDURATION, KEY_EXERCISETYPE, KEY_SETS, KEY_REPS, KEY_EXERCISEDATE, KEY_EXERCISEDATE};
 
     public SQLiteDatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -94,18 +86,12 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
         String DAILY_WORKOUT_INPUTS = "CREATE TABLE WorkoutInputs ( "
         + "id INTEGER PRIMARY KEY AUTOINCREMENT," + "name TEXT, " + "duration INTEGER, " + "type STRING, " + "SETS INTEGER, " + "REPS INTEGER, "
-                + "exerciseweight, " + "date DATE )";
-
-        String DELETION_TABLE = "CREATE TABLE Deletion ( "
-                + "title TEXT PRIMARY KEY, "
-                + "description TEXT, " + "primary_actor TEXT, " + "preconditions TEXT, " + "postconditions TEXT, " + "main_success_scenario TEXT, "
-                + "extensions TEXT, " + "frequency_of_use TEXT, " + "status TEXT, " + "priority TEXT )";
+                + "exerciseweight, " + "date INT )";
 
         Log.d("MSG", "FAILED AFTER CREATING DAILY INPUT");
         db.execSQL(CREATION_TABLE);
         db.execSQL(DAILY_INPUTS);
         db.execSQL(DAILY_WORKOUT_INPUTS);
-        db.execSQL(DELETION_TABLE);
     }
 
     public boolean initializedb()
@@ -270,6 +256,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_FAT, nutrients.getTotalFat());
         values.put(KEY_CHOLESTEROL, nutrients.getCholesterol());
         values.put(KEY_FIBER, nutrients.getDietaryFiber());
+        values.put(KEY_DATE, nutrients.getDate());
         // insert
         db.insert(NUTRIENT_INPUT_TABLE,null, values);
         db.close();
@@ -291,26 +278,6 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addDeletion(Deletion deletion) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        ContentValues contentValue = new ContentValues();
-        contentValue.put(KEY_TITLE, deletion.getTitle());
-        contentValue.put(KEY_DESC, deletion.getDescription());
-        contentValue.put(KEY_ACTOR, deletion.getPrimary_actor());
-        contentValue.put(KEY_PRECOND, deletion.getPreconditions());
-        contentValue.put(KEY_POSTCOND, deletion.getPostconditions());
-        contentValue.put(KEY_SCENARIO, deletion.getMain_success_scenario());
-        contentValue.put(KEY_EXTENSION, deletion.getExtensions());
-        contentValue.put(KEY_FREQUENCY, deletion.getFrequency_of_use());
-        contentValue.put(KEY_STATUS, deletion.getStatus());
-        contentValue.put(KEY_PRIORITY, deletion.getPriority());
-        // insert
-        db.insert(DELETION_TABLE_NAME,null, values);
-        db.close();
-    }
-
     public int updatePlayer(Player player) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -320,7 +287,6 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_WEIGHT, player.getWeight());
         values.put(KEY_HEIGHT, player.getHeight());
         values.put(KEY_FREQ, player.getFreq());
-
         int i = db.update(TABLE_NAME, // table
                 values, // column/value
                 "id = ?", // selections
@@ -329,20 +295,33 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         return i;
     }
 
-    public Nutrients getTodayMetric(String name) {
+    public Nutrients getTodayMetric(String name) throws ParseException {
         SQLiteDatabase db = this.getReadableDatabase();
         Nutrients rec = new Nutrients();
-        Cursor res = db.rawQuery("SELECT * FROM " + NUTRIENT_INPUT_TABLE + " WHERE name = ? ", new String[]{ name });
-        if (res.moveToLast()) {
-            rec.setName(name);
-            rec.setTotalCalories(res.getColumnIndex(String.valueOf(2)));
-            rec.setTotalCarbs(res.getColumnIndex(String.valueOf(3)));
-            rec.setTotalProtein(res.getColumnIndex(String.valueOf(4)));
-            rec.setTotalSugar(res.getColumnIndex(String.valueOf(5)));
-            rec.setTotalSleep(res.getColumnIndex(String.valueOf(6)));
-            rec.setTotalFat(res.getColumnIndex(String.valueOf(7)));
-            rec.setCholesterol(res.getColumnIndex(String.valueOf(8)));
-            rec.setDietaryFiber(res.getColumnIndex(String.valueOf(9)));
+
+        Cursor res = db.rawQuery("SELECT * FROM " + NUTRIENT_INPUT_TABLE + " WHERE name = ? ", new String[] { name } );
+        Cursor res2 = db.rawQuery("SELECT * FROM " + NUTRIENT_INPUT_TABLE + " WHERE date = ? ", new String[] { String.valueOf(SharedDate.getInstance().getValue())});
+        res = db.query(NUTRIENT_INPUT_TABLE, NUTRIENT_COLUMNS," date = ?", new String[] { String.valueOf(SharedDate.getInstance().getValue()) }, null, null, null);
+        if (res != null) {
+            do {
+                Log.d("RESS", String.valueOf(res.getColumnIndex(String.valueOf(2))));
+                res.moveToFirst();
+                rec.setName(name);
+                rec.setTotalCalories(res.getColumnIndex(String.valueOf(2)));
+                rec.setTotalCarbs(res.getColumnIndex(String.valueOf(3)));
+                rec.setTotalProtein(res.getColumnIndex(String.valueOf(4)));
+                Log.d("THIS IS THE REC", String.valueOf(rec.getTotalProtein()));
+                rec.setTotalSugar(res.getColumnIndex(String.valueOf(5)));
+                rec.setTotalSleep(res.getColumnIndex(String.valueOf(6)));
+                rec.setTotalFat(res.getColumnIndex(String.valueOf(7)));
+                rec.setCholesterol(res.getColumnIndex(String.valueOf(8)));
+                rec.setDietaryFiber(res.getColumnIndex(String.valueOf(9)));
+                rec.setInputDate();
+            }
+            while (res.moveToNext());
+        }
+        if (res != null && !res.isClosed()) {
+            res.close();
         }
         db.close();
         return rec;

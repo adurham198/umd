@@ -23,6 +23,8 @@ public class MainActivity extends Activity {
     Intent DailyNutrientScreen;
     Intent CalculatorScreen;
     Intent DeletionScreen;
+    Intent MetricScreen;
+    Intent UpdateScreen;
     Player player1 = new Player();
     SQLiteDatabaseHandler dbhelper;
     @Override
@@ -40,6 +42,8 @@ public class MainActivity extends Activity {
         DailyNutrientScreen = new Intent(MainActivity.this, com.example.umd.DailyNutrientsScreen.class);
         CalculatorScreen = new Intent(MainActivity.this, com.example.umd.Calculator.class);
         DeletionScreen = new Intent(MainActivity.this, DeletionActivity.class);
+        MetricScreen = new Intent(MainActivity.this, com.example.umd.MetricScreen.class);
+        //UpdateScreen = new Intent(MainActivity.this, com.example.umd.UpdateScreen.class);
         dbhelper = new SQLiteDatabaseHandler(this);
         dbhelper.initializedb();
         gotoLogin();

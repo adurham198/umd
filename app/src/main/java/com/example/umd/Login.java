@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.umd.objects.Player;
+import com.example.umd.objects.SharedDate;
 import com.example.umd.objects.Uname;
 
 public class Login extends MainActivity{
@@ -19,7 +20,10 @@ public class Login extends MainActivity{
     Button y_btn_signin;
     Intent HomeScreen;
     Uname sharedData = Uname.getInstance();
+    SharedDate sharedDate = SharedDate.getInstance();
+
     SQLiteDatabaseHandler dbhelper;
+    SharedDate d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

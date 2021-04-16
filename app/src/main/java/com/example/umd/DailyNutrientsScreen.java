@@ -2,6 +2,7 @@ package com.example.umd;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import com.example.umd.objects.Nutrients;
 import com.example.umd.objects.Uname;
 import com.example.umd.objects.Workouts;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class DailyNutrientsScreen extends MainActivity{
@@ -53,14 +55,17 @@ public class DailyNutrientsScreen extends MainActivity{
         b_btn_AddNutrient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNutrient();
+                try {
+                    addNutrient();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 startActivity(HomeScreen);
             }
         });
     }
 
-    public void addNutrient()
-    {
+    public void addNutrient() throws ParseException {
         Nutrients nutrients = new Nutrients();
         String name = sharedData.getValue();
 
@@ -72,7 +77,6 @@ public class DailyNutrientsScreen extends MainActivity{
         int fat = Integer.parseInt(b_Fat.getText().toString());
         int cholesterol = Integer.parseInt(b_Cholesterol.getText().toString());
         int fiber = Integer.parseInt(b_Fiber.getText().toString());
-        Date date = new Date();
 
         nutrients.setName(name);
         nutrients.setTotalCalories(calories);
@@ -84,6 +88,7 @@ public class DailyNutrientsScreen extends MainActivity{
         nutrients.setCholesterol(cholesterol);
         nutrients.setDietaryFiber(fiber);
         nutrients.setInputDate();
+        Log.d("Nutrient date record ID", String.valueOf(nutrients.getDate()));
         dbhelper.addNutrients(nutrients);
     }
 }

@@ -56,9 +56,6 @@ public class Register extends Activity {
         goback();
         registerfunc();
 
-
-
-
     }
     public void registerfunc()
     {

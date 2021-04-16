@@ -3,7 +3,6 @@ package com.example.umd.objects;
 public class Uname {
     private static Uname instance = new Uname();
 
-
     public static Uname getInstance(){
         return Uname.instance;
     }

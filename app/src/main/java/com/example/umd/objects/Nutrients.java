@@ -1,6 +1,13 @@
 package com.example.umd.objects;
 
+import android.util.Log;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Nutrients {
     private String name;
@@ -12,12 +19,12 @@ public class Nutrients {
     private int TotalFat;
     private int Cholesterol;
     private int dietaryFiber;
-    private Date inputDate;
+    private int inputDate;
 
     public Nutrients() {
     }
 
-    public Nutrients(String name, int TotalCalories, int TotalCarbs, int TotalProtein, int TotalSugar, int TotalSleep, int totalFat, int Cholesterol, int dietaryFiber, Date inputDate) {
+    public Nutrients(String name, int TotalCalories, int TotalCarbs, int TotalProtein, int TotalSugar, int TotalSleep, int totalFat, int Cholesterol, int dietaryFiber, int inputDate) {
         this.name = name;
         this.TotalCalories= TotalCalories;
         this.TotalCarbs = TotalCarbs;
@@ -93,11 +100,11 @@ public class Nutrients {
         this.dietaryFiber = dietaryFiber;
     }
 
-    public Date getDate() {
+    public int getDate() {
         return inputDate;
     }
     public void setInputDate() {
-        this.inputDate = new Date();
-    }
+        this.inputDate = SharedDate.getInstance().getValue();
 
+    }
 }

@@ -82,6 +82,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navtoDietRec" />
+    <Button
+        android:id="@+id/MetricScreen_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="View Daily Metrics"
+        android:textColor="#04198C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CalculatorButton" />
+
+    <Button
+        android:id="@+id/input_btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Update Account"
+        android:textColor="#04198C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MetricScreen_btn" />
 
     <Button
         android:id="@+id/inputDeletion"
@@ -93,5 +116,7 @@
         android:textColor="#04198C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CalculatorButton" />
+        app:layout_constraintTop_toBottomOf="@+id/input_btn_update" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
