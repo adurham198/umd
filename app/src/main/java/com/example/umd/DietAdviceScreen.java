@@ -14,10 +14,10 @@ public class DietAdviceScreen extends MainActivity{
     List<Player> players;
     SQLiteDatabaseHandler dbhelper;
     Player thisPlayer;
-    String highlyActiveAdvice = "Given that you are fairly active, your calorie recommendations may not be super accurate. " +
+    String highlyActiveAdvice = "Given that you are very active (6-7 active days per week), your calorie recommendations may not be super accurate. " +
             "The reason for this is that there is a greater possibility that your weekly calories are off based on your perceived" +
-            "workout frequency. This being said, it is important that you keep a closer eye on your daily calories and adjust accordingly" +
-            "based on your activity levels for that day.";
+            " workout frequency. This being said, it is important that you keep a closer eye on your daily calories and adjust accordingly" +
+            " based on your activity levels for that day.";
     String moderateActivity = "It looks as though you are fairly active by working out 3-5 days per week. Your calorie predictions might be" +
             " slightly low depending on if you are able to get to the gym 5 times in any given week or only 3 days. This being said, " +
             "it is important for you to make sure that you are adjusting your calories accordingly depending on if you are on the higher " +
